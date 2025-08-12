@@ -242,7 +242,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     async with httpx.AsyncClient() as http_client:
                         try:
                             response = await http_client.post(
-                                "https://sunjea1149.app.n8n.cloud/webhook/1149",
+                                "https://sunjea1149.app.n8n.cloud/webhook-test/1149",
                                 json={"chatInput": chat_input},
                                 timeout=60
                             )
