@@ -1,0 +1,31 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+*.env
+
+# Local development
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Python packaging
+*.egg-info/
+dist/
+build/

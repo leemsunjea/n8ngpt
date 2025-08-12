@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+
+  <script src="https://unpkg.com/flowbite@1.6.5/dist/flowbite.min.js"></script>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+  <button class="hamburger-btn" id="hamburgerBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <div class="sidebar" id="sidebar">
+    <!-- 상단 액션 버튼들을 감싸는 컨테이너 -->
+    <div class="top-actions-container">
+      <div class="sidebar-actions">
+        <button class="action-btn" id="newChatBtn">
+          <span>새 채팅</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4V20M4 12H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <div class="toggle-container">
+          <span class="toggle-label">출처 출력</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="sourceToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-section">
+      <div class="section-title">채팅</div>
+      <div class="chat-history" id="chatHistory"></div>
+    </div>
+  </div>
+
+  <div class="chat-container">
+    <div class="chat-messages" id="chatbox"></div>
+    <button id="scrollToBottom" class="scroll-to-bottom" aria-label="맨 아래로 이동">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </button>
+    <div class="input-container">
+      <form id="input-form" onsubmit="sendMessage(event)">
+        <textarea id="input" placeholder="무엇이든 부탁하세요" rows="1"></textarea>
+        <button type="submit" id="send-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="/static/app.js"></script>
+</body>
+
+</html>
