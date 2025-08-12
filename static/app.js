@@ -48,7 +48,7 @@ let reconnectAttempts = 0;
 let reconnectTimer = null;
 const MAX_RECONNECT_ATTEMPTS = 5;
 const RECONNECT_DELAY = 1000; // 1초
-const WEBSOCKET_URL = 'wss://port-0-nicen8n-maqzdlvl8104ba24.sel4.cloudtype.app/ws';
+const WEBSOCKET_URL = 'wss://port-0-nicen8n-demo-maqzdlvl8104ba24.sel4.cloudtype.app/ws';
 
 // WebSocket 연결 함수
 function connectWebSocket() {
