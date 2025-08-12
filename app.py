@@ -242,7 +242,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     async with httpx.AsyncClient() as http_client:
                         try:
                             response = await http_client.post(
-                                "https://sunjea1149.app.n8n.cloud/webhook-test/1149",
+                                "https://sunjea1149.app.n8n.cloud/webhook/1149",
                                 json={"chatInput": chat_input},
                                 timeout=60
                             )
@@ -329,6 +329,16 @@ async def websocket_endpoint(websocket: WebSocket):
                             temperature = float(chatbot_data.get("temperature", 0.7))
                             max_tokens = int(chatbot_data.get("max-tokens", 2000))
                             
+                            # 로깅: 모델 설정 정보
+                            print("\n=== 챗봇 모델 설정 ===")
+                            print(f"- 모델: {gpt_model}")
+                            print(f"- Temperature: {temperature}")
+                            print(f"- Max Tokens: {max_tokens}")
+                            print(f"- 시스템 프롬프트 길이: {len(system_prompt)}자")
+                            print(f"- 사용자 프롬프트 길이: {len(user_prompt)}자")
+                            print(f"- 참조 문서 수: {len(references)}개")
+                            print("===================\n")
+                            
                         except httpx.HTTPError as e:
                             error_msg = f"n8n API 요청 실패: {str(e)}"
                             print(f"❌ {error_msg}")
@@ -344,6 +354,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 except json.JSONDecodeError as e:
                     error_msg = f"잘못된 JSON 형식: {str(e)}"
                     print(f"❌ {error_msg}")
+                    print(f"수신된 데이터: {data}")
                     try:
                         await websocket.send_json({
                             'type': 'error',
@@ -422,7 +433,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 # API 호출
                 stream = await client.chat.completions.create(
-                    model=gpt_model,
+                    model="gpt-4o-mini",
                     messages=[
                         {"role": "system", "content": system_message},
                         {"role": "user", "content": user_message}
